@@ -1,92 +1,73 @@
-# Enterprise Windows Domain
+# Windows Server Installation
 
-## Project Overview
+## Overview
 
-This repository documents the design, deployment, and administration of a Windows-based enterprise environment for a fictional company named **SuHaTech**.
+This document describes the deployment of the first Windows Server for the **SuHaTech** enterprise environment.
 
-The project simulates the responsibilities of a Junior System Administrator, from preparing the first Windows Server to deploying Active Directory, DNS, Group Policy, file services, and domain-joined client machines.
-
-All implementation steps, validation procedures, and documentation are recorded throughout the project.
+The server will be prepared as the first Domain Controller in a future phase.
 
 ---
 
-# Company Scenario
+# Objective
 
-**Company Name:** SuHaTech
-
-**Industry:** Software Development & IT Services
-
-**Company Size:** 30 Employees
-
-As the company's first IT Engineer, the objective is to build a secure, scalable, and well-documented Windows infrastructure that can support future growth.
+Deploy a clean Windows Server installation and verify the initial operating system configuration before introducing Active Directory services.
 
 ---
 
-# Project Goals
+# Virtual Machine Information
 
-- Deploy Windows Server 2025
-- Prepare the server for enterprise deployment
-- Configure networking
-- Deploy Active Directory Domain Services
-- Configure DNS
-- Join Windows clients to the domain
-- Create Organizational Units (OUs)
-- Manage Users and Security Groups
-- Configure Group Policies
-- Deploy Shared Folders and NTFS Permissions
-- Document every implementation step
-
----
-
-# Current Progress
-
-| Phase | Status |
-|--------|--------|
-| Repository Initialization | ✅ Completed |
-| Windows Server Preparation | 🚧 In Progress |
-| Active Directory | ⏳ Planned |
-| DNS Configuration | ⏳ Planned |
-| Windows Client Deployment | ⏳ Planned |
-| Group Policy | ⏳ Planned |
-| File Server | ⏳ Planned |
+| Setting                | Value                                      |
+| ---------------------- | ------------------------------------------ |
+| Hypervisor             | VMware Workstation                         |
+| Guest Operating System | Microsoft Windows Server 2025 Standard     |
+| Computer Name          | DC01                                       |
+| Architecture           | x64                                        |
+| Virtual CPU            | 1 vCPU                                     |
+| Memory                 | 4095 MB                                    |
+| Network Adapter        | Intel(R) 82574L Gigabit Network Connection |
+| Network Mode           | NAT                                        |
+| IP Address             | 192.168.93.10                              |
+| Domain Membership      | WORKGROUP                                  |
+| Time Zone              | UTC +03:30 (Tehran)                        |
 
 ---
 
-# Repository Structure
+# Operating System Information
 
-```
-enterprise-windows-domain/
-
-│
-├── README.md
-├── docs/
-└── screenshots/
-```
+| Setting           | Value      |
+| ----------------- | ---------- |
+| Version           | 10.0.26100 |
+| Build             | 26100      |
+| Installation Date | 2026-07-21 |
+| Manufacturer      | Microsoft  |
 
 ---
 
-# Technologies
+# Current Configuration
 
-- Windows Server 2025
-- VMware Workstation
-- Active Directory Domain Services
-- DNS
-- PowerShell
-- Git
-- GitHub
-
----
-
-# Documentation
-
-The **docs** directory contains all technical documentation created during the implementation of this project.
-
-Each document represents a real deployment task completed during the infrastructure build.
+| Item                       | Status |
+| -------------------------- | ------ |
+| Windows Installed          | ✅     |
+| Computer Renamed           | ✅     |
+| Static IPv4 Configured     | ✅     |
+| Active Directory Installed | ❌     |
+| DNS Server Configured      | ❌     |
+| Domain Controller          | ❌     |
 
 ---
 
-# Project Status
+# Validation
 
-🚧 Work In Progress
+The operating system boots successfully.
 
-This repository is continuously updated as new enterprise services are deployed and documented.
+The server is reachable on the local network.
+
+The hostname is configured as **DC01**.
+
+The server currently operates as a standalone server and is ready for Active Directory deployment.
+
+---
+
+# Next Step
+
+Install the Active Directory Domain Services (AD DS) role and promote the server to the first Domain Controller for the SuHaTech environment.
