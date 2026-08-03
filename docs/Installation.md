@@ -2,15 +2,15 @@
 
 ## Overview
 
-This document describes the deployment of the first Windows Server for the **SuHaTech** enterprise environment.
+This document describes the initial deployment and validation of the first Windows Server in the SuHaTech enterprise environment.
 
-The server will be prepared as the first Domain Controller in a future phase.
+The server will later be promoted to the first Domain Controller after the infrastructure prerequisites are verified.
 
 ---
 
 # Objective
 
-Deploy a clean Windows Server installation and verify the initial operating system configuration before introducing Active Directory services.
+Deploy a clean installation of Windows Server 2025 and verify that the operating system and network configuration are ready for Active Directory deployment.
 
 ---
 
@@ -22,52 +22,68 @@ Deploy a clean Windows Server installation and verify the initial operating syst
 | Guest Operating System | Microsoft Windows Server 2025 Standard     |
 | Computer Name          | DC01                                       |
 | Architecture           | x64                                        |
-| Virtual CPU            | 1 vCPU                                     |
+| Processor              | Intel Core i7-6500U (Virtualized)          |
+| vCPU                   | 1                                          |
 | Memory                 | 4095 MB                                    |
 | Network Adapter        | Intel(R) 82574L Gigabit Network Connection |
-| Network Mode           | NAT                                        |
-| IP Address             | 192.168.93.10                              |
-| Domain Membership      | WORKGROUP                                  |
-| Time Zone              | UTC +03:30 (Tehran)                        |
+| Link Speed             | 1 Gbps                                     |
 
 ---
 
-# Operating System Information
+# Operating System
 
-| Setting           | Value      |
-| ----------------- | ---------- |
-| Version           | 10.0.26100 |
-| Build             | 26100      |
-| Installation Date | 2026-07-21 |
-| Manufacturer      | Microsoft  |
-
----
-
-# Current Configuration
-
-| Item                       | Status |
-| -------------------------- | ------ |
-| Windows Installed          | ✅     |
-| Computer Renamed           | ✅     |
-| Static IPv4 Configured     | ✅     |
-| Active Directory Installed | ❌     |
-| DNS Server Configured      | ❌     |
-| Domain Controller          | ❌     |
+| Setting           | Value              |
+| ----------------- | ------------------ |
+| Version           | 10.0.26100         |
+| Build             | 26100              |
+| Installation Date | 2026-07-21         |
+| Time Zone         | UTC+03:30 (Tehran) |
+| Current Role      | Standalone Server  |
 
 ---
 
-# Validation
+# Network Configuration
 
-The operating system boots successfully.
+| Setting            | Value         |
+| ------------------ | ------------- |
+| Interface          | Ethernet0     |
+| Address Assignment | Static        |
+| IPv4 Address       | 192.168.93.10 |
+| Prefix Length      | /24           |
+| Subnet Mask        | 255.255.255.0 |
+| Default Gateway    | 192.168.93.2  |
+| DNS Server         | 192.168.93.10 |
 
-The server is reachable on the local network.
+---
 
-The hostname is configured as **DC01**.
+# Verification
 
-The server currently operates as a standalone server and is ready for Active Directory deployment.
+The following validation steps were completed successfully:
+
+- Windows Server installed successfully
+- Computer renamed to **DC01**
+- Static IPv4 configuration verified
+- Network adapter operational (Up)
+- Link speed verified (1 Gbps)
+- Gateway configuration verified
+- DNS configuration verified
+
+---
+
+# Current Status
+
+| Component                   | Status     |
+| --------------------------- | ---------- |
+| Windows Installation        | ✅         |
+| Server Rename               | ✅         |
+| Static IPv4                 | ✅         |
+| Network Verification        | ✅         |
+| Active Directory            | ⏳ Pending |
+| DNS Role                    | ⏳ Pending |
+| Domain Controller Promotion | ⏳ Pending |
 
 ---
 
 # Next Step
 
-Install the Active Directory Domain Services (AD DS) role and promote the server to the first Domain Controller for the SuHaTech environment.
+Install the Active Directory Domain Services (AD DS) role and promote this server to the first Domain Controller of the SuHaTech environment.
