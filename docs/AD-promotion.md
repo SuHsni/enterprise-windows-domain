@@ -23,6 +23,17 @@ Create the first Active Directory Forest and deploy the initial Domain Controlle
 
 Pending...
 
+## Domain Controller Options
+
+| Setting                     | Value               |
+| --------------------------- | ------------------- |
+| Forest Functional Level     | Windows Server 2025 |
+| Domain Functional Level     | Windows Server 2025 |
+| DNS Server                  | Enabled             |
+| Global Catalog              | Enabled             |
+| Read Only Domain Controller | Disabled            |
+| DSRM Password               | Configured          |
+
 ## Domain
 
 Pending...
