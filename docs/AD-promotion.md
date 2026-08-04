@@ -34,6 +34,16 @@ Pending...
 | Read Only Domain Controller | Disabled            |
 | DSRM Password               | Configured          |
 
+## NetBIOS Name
+
+| Setting             | Value |
+| ------------------- | ----- |
+| NetBIOS Domain Name | CORP  |
+
+### Notes
+
+The default NetBIOS name was accepted because it matches the corporate naming convention.
+
 ## Domain
 
 Pending...
