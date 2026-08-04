@@ -44,6 +44,18 @@ Pending...
 
 The default NetBIOS name was accepted because it matches the corporate naming convention.
 
+## Database Paths
+
+| Component | Path              |
+| --------- | ----------------- |
+| Database  | C:\Windows\NTDS   |
+| Log Files | C:\Windows\NTDS   |
+| SYSVOL    | C:\Windows\SYSVOL |
+
+### Notes
+
+The default paths were selected because this is a single-server homelab environment. In enterprise deployments, databases and log files are commonly stored on separate storage volumes for improved performance and resilience.
+
 ## Domain
 
 Pending...
