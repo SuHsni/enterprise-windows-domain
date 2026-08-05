@@ -1,4 +1,4 @@
-# Active Directory Lab - Client Creation and Domain Join Journey
+# Client Creation and Domain Join Journey
 
 ## Objective
 
