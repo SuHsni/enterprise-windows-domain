@@ -182,6 +182,237 @@ Filtering reduces thousands of events to only the relevant ones during troublesh
 
 ---
 
-# Summary
+# 2- Performance Monitor
 
-Event Viewer is one of the primary troubleshooting tools in Windows Server. It enables administrators to investigate system, application, and security events efficiently by using event logs, filtering, and Event IDs.
+## Objective
+
+Learn how to use Windows Performance Monitor (PerfMon) to monitor and analyze the performance of a Windows Server.
+
+---
+
+## What is Performance Monitor?
+
+Performance Monitor is a built-in Windows tool used to monitor system performance in real time through **Performance Counters**.
+
+It can be used to identify resource bottlenecks involving:
+
+- CPU
+- Memory
+- Disk
+- Network
+
+---
+
+## Event Viewer vs Performance Monitor
+
+| Event Viewer                           | Performance Monitor           |
+| -------------------------------------- | ----------------------------- |
+| Records events and errors              | Measures system performance   |
+| Mainly used for troubleshooting events | Used for performance analysis |
+| Shows what happened                    | Shows what is happening       |
+| Uses Event IDs                         | Uses Performance Counters     |
+
+---
+
+## Performance Counter Structure
+
+Performance Monitor uses three main concepts:
+
+```text
+Object
+   ↓
+Counter
+   ↓
+Instance
+```
+
+### Object
+
+Represents a system component.
+
+Examples:
+
+- Processor
+- Memory
+- PhysicalDisk
+- Network Interface
+
+### Counter
+
+Specifies what should be measured.
+
+Examples:
+
+- `% Processor Time`
+- `Available MBytes`
+- `Avg. Disk Queue Length`
+- `Bytes Total/sec`
+
+### Instance
+
+Specifies which instance of the object should be monitored.
+
+Examples:
+
+- `_Total`
+- `Ethernet`
+- `Disk 0`
+
+---
+
+# CPU Monitoring
+
+### Object
+
+```text
+Processor
+```
+
+### Counter
+
+```text
+% Processor Time
+```
+
+### Instance
+
+```text
+_Total
+```
+
+This counter shows the percentage of CPU processing capacity currently being used.
+
+High CPU usage does not always indicate a problem. Short periods of high CPU usage can be normal during activities such as updates, backups, or heavy processing.
+
+Continuous high CPU utilization may indicate a CPU bottleneck and requires further investigation.
+
+---
+
+# Memory Monitoring
+
+### Object
+
+```text
+Memory
+```
+
+### Counter
+
+```text
+Available MBytes
+```
+
+This counter shows the amount of memory currently available for use.
+
+High memory utilization alone does not necessarily indicate a problem because Windows uses available memory for caching.
+
+Low and consistently decreasing available memory is more important when investigating memory pressure.
+
+Other useful memory counters include:
+
+- `Pages/sec`
+- `Committed Bytes`
+
+---
+
+# Disk Monitoring
+
+### Object
+
+```text
+PhysicalDisk
+```
+
+Useful counters:
+
+```text
+Avg. Disk Queue Length
+% Disk Time
+```
+
+### Avg. Disk Queue Length
+
+Shows the number of disk requests waiting to be processed.
+
+A consistently high queue can indicate disk contention.
+
+### % Disk Time
+
+Shows how busy the disk is.
+
+A sustained value close to 100% may indicate that the disk is under heavy load, but a temporary high value can be completely normal.
+
+Disk performance should always be analyzed together with workload and other counters.
+
+---
+
+# Network Monitoring
+
+### Object
+
+```text
+Network Interface
+```
+
+Useful counters:
+
+```text
+Bytes Total/sec
+Bytes Received/sec
+Bytes Sent/sec
+Current Bandwidth
+```
+
+### Bytes Total/sec
+
+Shows the total amount of data being transmitted and received per second.
+
+### Bytes Received/sec
+
+Shows incoming network traffic.
+
+### Bytes Sent/sec
+
+Shows outgoing network traffic.
+
+### Current Bandwidth
+
+Shows the current bandwidth of the network interface.
+
+Network utilization should be compared with the interface's available bandwidth rather than judged from a single traffic value.
+
+---
+
+# Practical Monitoring Workflow
+
+When a server becomes slow, performance counters can be used to investigate the main resources:
+
+```text
+Server Slow
+    ↓
+CPU
+    ↓
+Memory
+    ↓
+Disk
+    ↓
+Network
+    ↓
+Identify the Bottleneck
+```
+
+The goal is not simply to find a high number, but to determine **which resource is actually limiting system performance**.
+
+---
+
+# Practical Tasks Completed
+
+- Opened Performance Monitor
+- Learned Object / Counter / Instance
+- Monitored CPU usage
+- Monitored available memory
+- Monitored disk activity
+- Monitored disk queue length
+- Monitored network traffic
+- Performed a file transfer to observe network activity
+- Learned how to interpret performance values
